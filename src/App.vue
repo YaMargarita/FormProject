@@ -1,28 +1,39 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <form-buttons @openOrderForm="openOrderForm"/>
+    <order-form v-if="isOrderModalOpen" @closeOrderForm="closeOrderForm"/>
+    <popup-form v-if="isPopupOpen" @closePopup="closePopup"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import FormButtons from '@/components/FormButtons';
+import OrderForm from '@/components/OrderForm';
+import PopupForm from "@/components/PopupForm";
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    FormButtons,
+    OrderForm,
+    PopupForm
+  },
+  data() {
+    return {
+      isOrderModalOpen: false,
+      isPopupOpen: false
+    }
+  },
+  methods: {
+    openOrderForm() {
+      this.isOrderModalOpen = true;
+    },
+    closeOrderForm(isFormSubmitted) {
+      this.isOrderModalOpen = false;
+      if (isFormSubmitted) this.isPopupOpen = true;
+    },
+    closePopup() {
+      this.isPopupOpen = false;
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

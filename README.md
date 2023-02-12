@@ -1,24 +1,11 @@
 # form-project
 
-## Project setup
+## Для начала необходимо установить все зависимости командой
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Запуск проекта осуществляется командой
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
